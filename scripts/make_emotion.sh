@@ -38,5 +38,5 @@ if [ $flag_skip = 'false' ]; then
         tmux send-keys "scripts/emotion_dialog.sh; touch .lock_tmux; exit" C-m
         tmux attach -t "PA-NEMU" 
 else
-        make all
+        make all |& tee make.log
 fi
