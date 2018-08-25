@@ -1,25 +1,60 @@
 #!/bin/bash
 
 #判断间隔时间
+
+flag_dis='true'   
+flag_DNF='true'    #exist
+
+if [ ! -f ~/.pa-nemu/emotion/Disturb.txt ]; then
+	flag_dis='false'
+fi
+if [ ! -f ~/.pa-nemu/emotion/DoNotFreq.txt ]; then
+	flag_DNF='false'
+fi
+	
+if [ $flag_dis = 'true' ]; then
 while read line
 do
     #echo $line 
     var1=`echo $line|awk -F ' ' '{print $1}'`
     var2=`echo $line|awk -F ' ' '{print $2}'`
 done < ~/.pa-nemu/emotion/Disturb.txt
+fi
 
-D_time=3600000
+if [ $flag_DNF = 'true' ]; then
+while read line
+do
+    #echo $line 
+    var3=`echo $line`
+done < ~/.pa-nemu/emotion/DoNotFreq.txt
+fi
+
+D_time=3600000   #a hour
+D2_time=900000   #a quarter
 
 flag_skip='false'
-if [ $var1 = "1" ]; then
-    T=$[$(date +%s%N)/1000000]
-    T=$[$T-$var2]
-    #echo $T
-    if [ $T -lt $D_time ]; then
-        flag_skip='true'
-    else
-        flag_skip='false'
-    fi
+
+T=$[$(date +%s%N)/1000000]   #current time
+   
+if [ $flag_DNF = 'true' ]; then
+	T2=$[$T-$var3]
+	if [ $T2 -lt $D2_time ]; then   #less than a quarter
+		flag_skip='true'
+	fi
+fi
+
+if [ $flag_skip = 'false' ]; then
+	if [ $flag_dis = 'true' ]; then
+		if [ $var1 = "1" ]; then    #do not disturb
+    		T1=$[$T-$var2]
+    		#echo $T
+    		if [ $T1 -lt $D_time ]; then
+        		flag_skip='true'
+    		else
+      	  		flag_skip='false'
+    		fi
+		fi
+	fi
 fi
 
 #echo $flag_skip
