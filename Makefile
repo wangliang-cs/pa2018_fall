@@ -189,39 +189,39 @@ submit_pa-1: update
 
 submit_pa-2-1: update
 	$(call git_commit, "submit_pa-2-1")
-	python $(Submit_Script) pa-2-1 $(STU_ID) $(Server_IP)
+	$(Submit_Script) pa-2-1 $(STU_ID) $(Server_IP)
 
 submit_pa-2-2: update
 	$(call git_commit, "submit_pa-2-2")
-	python $(Submit_Script) pa-2-2 $(STU_ID) $(Server_IP)
+	$(Submit_Script) pa-2-2 $(STU_ID) $(Server_IP)
 
 submit_pa-2-3: update
 	$(call git_commit, "submit_pa-2-3")
-	python $(Submit_Script) pa-2-3 $(STU_ID) $(Server_IP)
+	$(Submit_Script) pa-2-3 $(STU_ID) $(Server_IP)
 
 submit_pa-3-1: update
 	$(call git_commit, "submit_pa-3-1")
-	python $(Submit_Script) pa-3-1 $(STU_ID) $(Server_IP)
+	$(Submit_Script) pa-3-1 $(STU_ID) $(Server_IP)
 
 submit_pa-3-2: update
 	$(call git_commit, "submit_pa-3-2")
-	python $(Submit_Script) pa-3-2 $(STU_ID) $(Server_IP)
+	$(Submit_Script) pa-3-2 $(STU_ID) $(Server_IP)
 
 submit_pa-3-3: update
 	$(call git_commit, "submit_pa-3-3")
-	python $(Submit_Script) pa-3-3 $(STU_ID) $(Server_IP)
+	$(Submit_Script) pa-3-3 $(STU_ID) $(Server_IP)
 
 submit_pa-4-1: update
 	$(call git_commit, "submit_pa-4-1")
-	python $(Submit_Script) pa-4-1 $(STU_ID) $(Server_IP)
+	$(Submit_Script) pa-4-1 $(STU_ID) $(Server_IP)
 
 submit_pa-4-2: update
 	$(call git_commit, "submit_pa-4-2")
-	python $(Submit_Script) pa-4-2 $(STU_ID) $(Server_IP)
+	$(Submit_Script) pa-4-2 $(STU_ID) $(Server_IP)
 
 submit_pa-4-3: update
 	$(call git_commit, "submit_pa-4-3")
-	python $(Submit_Script) pa-4-3 $(STU_ID) $(Server_IP)
+	$(Submit_Script) pa-4-3 $(STU_ID) $(Server_IP)
 
 update:
 	./scripts/update $(STU_ID)
