@@ -18,6 +18,8 @@ Protect your install.sh script, sensitive information contained
 
 Contact teacher or teaching assistants if you encounter any problem
 
+DO NOT execute others' install.sh on your own machine, this will rewrite your identity information!
+
 # System Requirements
 
 32-bit Debian Linux
