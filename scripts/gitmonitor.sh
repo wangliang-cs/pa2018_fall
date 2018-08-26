@@ -4,8 +4,6 @@
 
 
 
-nothing_changed="On branch master
-nothing to commit, working tree clean"
 time_ID=$(date "+%Y-%m-%d")
 Log_path=/home/$User/.pa-nemu/tracking/$time_ID"_$Student_ID".log
 Track_path=/home/$User/.pa-nemu/tracking/
@@ -18,8 +16,8 @@ function gitmonitor(){
 	#echo "111" >>/home/$User/a.txt
 	git add . -A
 	check_results=`git commit -m "monitor test" --author="monitor<tracer@njuics.org>"`
-	
-	if [ "$check_results" == "$nothing_changed" ]
+	res=`echo $check_results | grep -E 'nothing to commit, working tree clean'`
+	if [ ! -z "$res" ]
 	then 
 		time=$(date "+%Y-%m-%d %H:%M:%S")
 	else
