@@ -7,11 +7,12 @@ OPERAND opr_src, opr_dest;
 void operand_read(OPERAND * opr) {
 	switch(opr->type) {
 		case OPR_MEM:
-			//assert(opr->sreg == SREG_DS || opr->sreg == SREG_SS);
-			opr->val = vaddr_read(opr->addr, opr->sreg, 4);
+			//assert(opr->sreg == SREG_DS || opr->sreg == SREG_SS ...);
+			// thank Peiwen Yu from CS'16 for this fix
+			opr->val = vaddr_read(opr->addr, opr->sreg, opr->data_size / 8);
 			break;
 		case OPR_IMM: 
-			opr->val = vaddr_read(opr->addr, SREG_CS, 4);
+			opr->val = vaddr_read(opr->addr, SREG_CS, opr->data_size / 8);
 			break;
 		case OPR_REG:
 			if(opr->data_size == 8) {
